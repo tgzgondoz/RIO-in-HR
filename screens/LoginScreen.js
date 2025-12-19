@@ -1,3 +1,4 @@
+// screens/LoginScreen.js - Update imports
 import React, { useState } from 'react';
 import {
   View,
@@ -5,7 +6,6 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -13,7 +13,8 @@ import {
   ActivityIndicator,
   Dimensions,
 } from 'react-native';
-import { MaterialIcons, Feather } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context'; // Changed import
+import { MaterialIcons, Feather, FontAwesome } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 
@@ -38,10 +39,10 @@ export default function LoginScreen({ navigation }) {
     setIsLoading(true);
 
     try {
-      // Simulate API call - Replace with actual authentication
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // For demo purposes, navigate based on login type
+      // Navigate to appropriate dashboard
       if (loginType === 'candidate') {
         navigation.replace('CandidateDashboard');
       } else {
@@ -49,7 +50,7 @@ export default function LoginScreen({ navigation }) {
       }
       
     } catch (error) {
-      Alert.alert('Login Failed', error.message || 'Invalid credentials');
+      Alert.alert('Login Failed', 'Invalid credentials');
     } finally {
       setIsLoading(false);
     }
@@ -60,7 +61,6 @@ export default function LoginScreen({ navigation }) {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       Alert.alert('Coming Soon', `${provider} login will be available soon!`);
-      // For now, just show a message
     } catch (error) {
       Alert.alert('Error', `Failed to login with ${provider}`);
     } finally {
@@ -70,12 +70,10 @@ export default function LoginScreen({ navigation }) {
 
   const handleForgotPassword = () => {
     Alert.alert('Coming Soon', 'Password reset feature coming soon!');
-    // navigation.navigate('ForgotPassword');
   };
 
   const handleSignUp = () => {
     Alert.alert('Coming Soon', 'Sign up feature coming soon!');
-    // navigation.navigate('SignUp');
   };
 
   return (
@@ -222,14 +220,14 @@ export default function LoginScreen({ navigation }) {
               <View style={styles.divider} />
             </View>
 
-            {/* Social Login */}
+            {/* Social Login - Fixed Icons */}
             <View style={styles.socialButtons}>
               <TouchableOpacity
                 style={styles.socialButton}
                 onPress={() => handleSocialLogin('Google')}
                 disabled={isLoading}
               >
-                <MaterialIcons name="google" size={20} color="#DB4437" />
+                <FontAwesome name="google" size={20} color="#DB4437" />
                 <Text style={styles.socialButtonText}>Google</Text>
               </TouchableOpacity>
 
@@ -238,7 +236,7 @@ export default function LoginScreen({ navigation }) {
                 onPress={() => handleSocialLogin('LinkedIn')}
                 disabled={isLoading}
               >
-                <MaterialIcons name="linkedin" size={20} color="#0077B5" />
+                <FontAwesome name="linkedin" size={20} color="#0077B5" />
                 <Text style={styles.socialButtonText}>LinkedIn</Text>
               </TouchableOpacity>
             </View>
