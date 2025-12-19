@@ -4,8 +4,8 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function NotificationsScreen() {
   return (
     <View style={styles.container}>
-      <Text>Notifications Screen</Text>
-      <Text>Real-time agent alerts here</Text>
+      <Text style={styles.title}>Notifications</Text>
+      <Text>Real-time alerts and notifications</Text>
     </View>
   );
 }
@@ -15,5 +15,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });

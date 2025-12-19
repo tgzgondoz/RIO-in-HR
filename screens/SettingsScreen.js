@@ -4,8 +4,8 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function SettingsScreen() {
   return (
     <View style={styles.container}>
-      <Text>Settings Screen</Text>
-      <Text>App settings and preferences</Text>
+      <Text style={styles.title}>Settings</Text>
+      <Text>App settings and configuration</Text>
     </View>
   );
 }
@@ -15,5 +15,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });

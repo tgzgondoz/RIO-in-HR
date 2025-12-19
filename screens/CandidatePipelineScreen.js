@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function CandidatePipelineScreen() {
   return (
     <View style={styles.container}>
-      <Text>Candidate Pipeline Screen</Text>
+      <Text style={styles.title}>Candidate Pipeline</Text>
       <Text>Track candidate progress here</Text>
     </View>
   );
@@ -15,5 +15,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });
